@@ -6,27 +6,23 @@
 .listImage {
     margin: auto;
     display: block;
-    height: 4em;
-    width: 4em;
+    max-height: 10em;
+    max-width: 10em;
     padding: 1%;
 }
 
 .listItem {
-    display: grid;
+    display: flex;
+    justify-content: space-around;
     border: 2px solid gray;
     border-radius: 1em;
-    margin: 5px;
-    text-align: center;
-}
-
-.listItem p {
     margin: auto;
-    
+    background-color: lightgray;
 }
 
 .catalogueBackground {
     margin: 1%;
-    background-color: lightgray;
+    background-color: darkgrey;
     width: 20em;
     border: 2px solid lightgray;
     border-radius: 1em;
@@ -37,7 +33,7 @@
 .itemBackground {
     margin: 1em;
     background-color: lightgray;
-    max-width: 100%;
+    
     max-height: min-content;
     border: 2px solid lightgray;
     border-radius: 1em;
@@ -48,3 +44,60 @@
     height: 90%;
     padding: 1%;
 }
+
+.imageContainer {
+    padding: 5%;
+    align-content: center;
+    align-self: center;
+}
+
+.navigationArrow {
+    height: 3em;
+    margin: 1em;
+    align-self: center;
+    
+}
+
+.backNavigationArrow{
+    height: 3em;
+    margin: 1em;
+    
+}
+
+.navigationContainer {
+    display: flex;
+
+}
+
+.itemContainer {
+    align-items: center;
+    border: 2px solid gray;
+    border-radius: 1em;
+    margin: auto;
+    background-color: gray;
+    max-height: max-content;
+}
+
+.infoBackground {
+    margin: 1em;
+    background-color: darkgrey;
+    padding: auto;
+    max-height: min-content;
+    border: 2px solid lightgray;
+    border-radius: 1em;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid gray;
+    border-radius: 1em;
+    margin: auto;
+    background-color: lightgray;
+}
+
+.infoImg {
+    margin-top: 3%;
+    padding: auto;
+}
+

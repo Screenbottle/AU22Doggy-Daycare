@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import './catalogue.css';
-import CatalogueItem from "./CatalogueItem";
+import LeftArrow from "../assets/leftarrow.png";
+import RightArrow from "../assets/rightarrow.png";
 
 
-const Catalogue = () => {
+const Catalogue = (props) => {
 
     const url = 'https://api.jsonbin.io/v3/b/642e81bfebd26539d0a58dde'
 
@@ -16,24 +18,33 @@ const Catalogue = () => {
     const [itemContent, setItemContent] = useState(null);
 
     useEffect(() => {
-        getDogList();
+        if (props.dogList === null || props.dogList === undefined) {
+            getDogList();
+        }
+        else {
+            setDogList(props.dogList);
+        }
+        
     }, []);
 
-    useEffect(() => {
-        setItemContent(
-            <CatalogueItem dog={selectedDog}/>
-        )
-    }, [selectedDog]);
 
     useEffect(() => {
         //console.log(dogList[0].name)
         if (dogList != null) {
-            setListItems(dogList.map((dog) => 
+            setListItems(dogList.map((dog, index) => 
             <li key={dog.chipNumber} onClick={()=> setSelectedDog(dog)}>
-                <div className="listItem">
-                    <img className="listImage" src={dog.img}/>
-                    <p>{dog.name}</p>
-                </div>
+                <section className="listItem">
+                    <div className="imageContainer">
+                        <h3>{dog.name}</h3>
+                        <img className="listImage" src={dog.img} alt={dog.name}/>
+                        <h5>Ras: {dog.breed}</h5>
+                        <h5>Ägare: {dog.owner.name} {dog.owner.lastName}</h5>
+                        
+                    </div>
+                    <Link to={`/catalogue/item/${index}`}>
+                        <img className="navigationArrow" src={RightArrow}/>
+                    </Link>
+                </section>
             </li>
             ));
 
@@ -46,6 +57,7 @@ const Catalogue = () => {
         const data = await response.json();
 
         setDogList(data.record);
+        props.setDogList(data.record);
     }
 
     return (
@@ -56,9 +68,7 @@ const Catalogue = () => {
                 </ul>
             
             </div>
-            <div className="itemBackground">
-                {itemContent}
-            </div>
+            
         </div>
     )
 }

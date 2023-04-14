@@ -3,9 +3,12 @@ import './App.css'
 import Welcome from './routes/Welcome'
 import Catalogue from './routes/Catalogue'
 import { Route, Routes } from 'react-router'
+import { useState } from 'react'
+import CatalogueItem from './routes/CatalogueItem'
 
 function App() {
   
+  const [dogList, setDogList] = useState(null);
 
   return (
     <div className="App">
@@ -15,11 +18,11 @@ function App() {
         }/>
 
         <Route path='/catalogue' element={
-          <Catalogue />
+          <Catalogue dogList={dogList} setDogList={() => setDogList()}/>
         }/>
 
-        <Route path='/catalogue/:currentdog' element={
-          <Catalogue />
+        <Route path='/catalogue/item/:currentdog' element={
+          <CatalogueItem dogList={dogList} setDogList={() => setDogList() }/>
         }/>
       </Routes>
     </div>
