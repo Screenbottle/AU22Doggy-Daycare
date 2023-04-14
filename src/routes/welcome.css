@@ -1,0 +1,22 @@
+.welcomeBackground {
+    justify-content: center;
+    display: grid;
+    border: 2px solid gray;
+    border-radius: 1em;
+    margin: auto;
+    color: lightblue;
+    background-color: black;
+    
+}
+
+.welcomeBackground h2 {
+    padding: 2%;
+    align-self: center;
+    justify-self: auto;
+}
+
+.welcomeBackground button {
+    align-self: center;
+    justify-self: auto;
+}
+
